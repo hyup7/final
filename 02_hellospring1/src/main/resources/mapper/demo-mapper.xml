@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybats.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dev">
+ 	<insert id="insertDemo">
+	INSERT INTO DEV VALUES(seq_dev_no.nextval,#{devName},#{devAge},#{devEmail},#{devGender},
+	#{devLang, typeHandler=com.bs.spring.common.StringArrayTypeHandler}
+<!-- <foreach collection="devLang" item="l" open="'" close="'" separator=",">${l}</foreach> -->
+)
+	</insert>
+	<select id="selectDevList" resultMap="DevMap">
+		SELECT * FROM DEV
+	</select>
+	<resultMap type="dev" id="DevMap">
+		<result column="devlang" property="devLang" typeHandler="strArr"/>
+	</resultMap>
+</mapper>

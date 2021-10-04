@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=01_hellospring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.spring.demo.model.service{DemoService.java[DemoService" modifiers="513" timestamp="1625217168080"/>
+    <typeInfo handle="=01_hellospring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.spring.demo.model.dao{DemoDao.java[DemoDao" modifiers="513" timestamp="1625217241919"/>
+    <typeInfo handle="=02_hellospring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.bs.spring.memo.model.service{MemoService.java[MemoService" modifiers="513" timestamp="1625655005161"/>
+    <typeInfo handle="=02_hellospring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.bs.spring.memo.model.dao{MemoDao.java[MemoDao" modifiers="513" timestamp="1625655033291"/>
+    <typeInfo handle="=02_hellospring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.bs.spring.board.model.service{BoardService.java[BoardService" modifiers="513" timestamp="1626088928072"/>
+</typeInfoHistroy>

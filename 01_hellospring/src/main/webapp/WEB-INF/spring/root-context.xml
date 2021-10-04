@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+<!-- 	스프링이 등록된 appleBean을 기본생성자로 생선해서 관리 -->
+<!-- 	<bean id="apple" class="com.kh.spring.Fruit"/> -->
+<!-- 	멤버변수에 값을 대입 후 bean생성하게 설정하기
+		1.setter이용
+		2.매개변수있는 생성자 이용
+ -->
+<!-- 	<bean id="apple" class="com.kh.spring.Fruit">
+		<property name="name" value="사과"/>
+		<property name="price" value="3000"/>
+		<property name="color" value="빨강"/>
+	</bean> -->
+	<bean id="apple" class="com.kh.spring.Fruit">
+		<constructor-arg index="0" value="사과"/>
+		<constructor-arg index="1" value="2000"/>
+		<constructor-arg index="2" value="녹색"/>
+	</bean>
+	
+<!-- 	DB접속을 위한 클래스 bean으로 등록하기
+		1.jdbc로 DB에 연결하는 정보를 저장하는 클래스 bean등록 ->BasicDataSource
+		2.mybatis에서 사용하는 SQLSession을 생성하는 클래스 등록하기 ->SqlSessionFactoryBean
+		3. mybatis설정파일 ->mybatis-config.xml
+		-mapper파일 ->000-mapper.xml
+		-dataSource대한 정보
+		3. 실제 SqlSession클래스로 사용되는 클래스 등록 ->SqlSeesionTemplate
+		
+		
+
+ -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1522:xe"/>
+		<property name="username" value="SPRING"/>
+		<property name="password" value="SPRING"/>	
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
+	</bean>
+	
+	
+</beans>

@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>채팅화면</title>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
+</head>
+<body>
+<!-- 	spring에서는 기본적으로 soockJS라는 websocket라이브러리를 사용 -->
+	<input type="text" id="msg">
+	<button id="sendMsg">전송하기</button>
+	<div id="msgContainer"></div>
+	<script>
+		let sock=new SockJS("http://localhost:9090${pageContext.request.contextPath}/chatting");
+		sock.onopen=e=>{
+			console.log(e);
+		}
+		sock.onmessage=e=>{
+			console.log(e);
+		let cotainer=document.getElementById("msgContainer")
+		cotainer.innerText+=e.data
+			
+		}
+		sock.onclose=e=>{
+			
+			
+		}
+		
+		let btn=document.getElementById("sendMsg");
+		btn.addEventListener("click",e=>{
+			const msg=document.getElementById("msg").value;
+			sock.send(msg);
+		});
+		
+		</script>
+</body>
+</html>
